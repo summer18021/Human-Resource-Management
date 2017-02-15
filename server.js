@@ -1,4 +1,3 @@
-//当req.body里没有name这一项，typeof(name)=="undefinded", 当有name,但name里没有值时，name.length==0
 var express    = require('express');                       
 var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
