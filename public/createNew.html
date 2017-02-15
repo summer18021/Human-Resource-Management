@@ -1,0 +1,68 @@
+
+<h2>Create New Employee</h2>
+        <form  ng-controller="createCtrl as up" name="up.upload_form">
+                Single Image with validations
+            <input 
+                class="btn btn-info"
+                type="file" 
+                ngf-select 
+                ng-model="up.file" 
+                name="file" 
+                ngf-pattern="'image/*'"
+                accept="image/*" 
+                ngf-max-size="20MB" 
+                />
+            Image thumbnail: <img style="width:100px;" ng-show="!!up.file" ngf-thumbnail="up.file || '/default.png'"/>
+            <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+            <i ng-show="up.upload_form.file.$error.maxSize">File too large 
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+            <button type="submit" ng-click="up.submit()" class="btn btn-warning">submit</button>
+            <p>{{up.progress}}</p>
+        </form>
+
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" class="form-control" ng-model="firstName" placeholder="First Name">
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" class="form-control" ng-model="lastName" placeholder="Last Name">
+
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" ng-model="title" placeholder="Title">
+
+    <label for="gender">Gender:</label>
+    <input type="text" class="form-control" ng-model="gender" placeholder="Gender">
+
+    <label for="age">Age:</label>
+    <input type="text" class="form-control" ng-model="age" placeholder="Age">  
+    
+    <label for="startDate">Start Date:</label>
+    <input type="text" class="form-control" ng-model="startDate" placeholder="Start Date"> 
+
+    <label for="officePhone">Office Phone:</label>
+    <input type="text" class="form-control" ng-model="officePhone" placeholder="office phone">
+
+    <label for="cellPhone">Cell Phone:</label>
+    <input type="text" class="form-control" ng-model="cellPhone" placeholder="cell phone">
+
+    <label for="sms">SMS:</label>
+    <input type="text" class="form-control" ng-model="sms" placeholder="SMS">
+
+	<label for="email">Email:</label>
+    <input type="text" class="form-control" ng-model="email" placeholder="email">   
+
+    <label for="managerID">Fill out Manager ID:</label>
+    <input type="text" class="form-control" ng-model="managerID" placeholder="ManagerID"> 
+    <div>
+        <label>manager ids:</label>
+        <select ng-model="selectedManager" ng-options="x.firstName for x in employees">
+                {{x.firstName}}
+        </select>
+        <p>you selected manager name: {{selectedManager.firstName}}</p>
+        <p>the manager id is: {{selectedManager._id}}</p>
+    </div>
+
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="createNew()">Create and Save</button>
+</form>

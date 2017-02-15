@@ -1,0 +1,43 @@
+<div>
+	<div class="col-xs-6">
+		 <input class="form-control" ng-model="searchText" type="text">
+	</div>
+	<button type="button" class="btn btn-primary" ng-click="search()">
+		<span class="glyphicon glyphicon-search"></span>
+		Search
+	</button>
+	<p></p>
+
+	<table class="table table-striped table-bordered text-center">
+		<thead>
+			<tr class="row">
+				<th class="col-md-3 text-center">Picture</th>
+				<th class="col-md-3 text-center">Name</th>
+				<th class="col-md-2 text-center">Title</th>
+				<th class="col-md-2 text-center">Detail</th>
+				<th class="col-md-2 text-center">DirectReports</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="x in employees" class="row">
+				<td>
+					<img src="/uploads/{{x.picName}}" width="96px" height="96px">
+				</td>
+				<td>{{x.firstName}}&nbsp&nbsp{{x.lastName}}</td>
+				<td>{{x.title}}</td>
+				<td>
+					<a href="#/route5/{{x._id}}" class="btn btn-info" role="button">
+						<span class="glyphicon glyphicon-user"></span>
+						View
+					</a>
+				</td>
+				<td>
+					<button type="button" class="btn btn-info" ng-click="viewDR(x.directReports)">
+						{{x.directReports.length}}
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
